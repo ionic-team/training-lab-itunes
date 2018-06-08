@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, ViewController } from "ionic-angular";
 
 @Component({
   selector: "page-home",
@@ -7,5 +7,12 @@ import { NavController } from "ionic-angular";
 })
 export class HomePage {
   foo = HomePage;
-  constructor(public navCtrl: NavController) {}
+  views: ViewController[];
+  constructor(public navCtrl: NavController) {
+    this.views = this.navCtrl.getViews();
+  }
+  pushClick(event: MouseEvent) {
+    this.navCtrl.push(HomePage);
+    console.log(event);
+  }
 }
